@@ -3,7 +3,7 @@
 ### Java8 新特性列表
 
 *   Java语言新特性（Java Programming Language）
-    *   [Lambdas表达式（Lambda Expressions）](http://www.iamroma.com/article/details/174d2938b5c746d3a4bb0f98242a7216#)
+    *   [Lambdas表达式（Lambda Expressions）](http://www.iamroma.com/article/details/7e761915c4b541a8a5e2b4e9a457cda9)
     *   [方法引用（Method references）](http://www.iamroma.com/article/details/174d2938b5c746d3a4bb0f98242a7216#)
     *   [接口默认与静态方法（Default methods & Static methods in interfaces）](http://www.iamroma.com/article/details/174d2938b5c746d3a4bb0f98242a7216#)
     *   [重复注解（Repeating Annotations）](http://www.iamroma.com/article/details/174d2938b5c746d3a4bb0f98242a7216#)

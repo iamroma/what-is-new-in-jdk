@@ -3,9 +3,7 @@ package com.roma.jdk8.language;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -17,10 +15,17 @@ import java.util.function.Supplier;
 public class LambdaExample {
 
     private static Person admin;
+    private static List<Integer> integers;
     private static List<Person> personList;
 
     static {
         admin = new Person("Admin", Person.Sex.BOY, 24);
+        integers = new ArrayList<>(5);
+        integers.add(15);
+        integers.add(12);
+        integers.add(24);
+        integers.add(13);
+        integers.add(16);
         personList = new ArrayList<>();
         personList.add(new Person("cc", Person.Sex.GIRL, 12));
         personList.add(new Person("jj", Person.Sex.BOY, 15));
@@ -28,8 +33,7 @@ public class LambdaExample {
         personList.add(new Person("yy", Person.Sex.BOY, 16));
     }
 
-    private LambdaExample() {
-    }
+    private LambdaExample() {}
 
     /**
      * Test java.util.function.Consumer
@@ -73,6 +77,8 @@ public class LambdaExample {
 
     public static void beforeJava8() {
 
+        System.out.println("=========================Before Java8=========================");
+
         // 多线程
         new Thread(new Runnable() {
             @Override
@@ -97,10 +103,22 @@ public class LambdaExample {
             System.out.println(feature);
         }
 
+        // 集合排序
+        System.out.println("排序前：" + integers);
+        Collections.sort(integers, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return Integer.compare(o2, o1);
+            }
+        });
+        System.out.println("排序后：" + integers);
+
         // ...
     }
 
     public static void afterJava8() {
+
+        System.out.println("=========================After Java8=========================");
 
         // 多线程
         new Thread(() -> System.out.println("In Java8!"));
@@ -116,10 +134,15 @@ public class LambdaExample {
                 "Date and Time API");
         features.forEach(n -> System.out.println(n));
 
+        // 集合排序
+        System.out.println("排序前：" + integers);
+        Collections.sort(integers, (a, b) -> Integer.compare(b, a));
+        System.out.println("排序后：" + integers);
+
         // ...
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         // Consumer test
         LambdaExample.testConsumer(person -> System.out.println(getIntroduction(person)));
